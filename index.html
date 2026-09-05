@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <title>Roca con Lucho · 2026</title>
+
+  <meta
+    name="description"
+    content="Roca con Lucho · General Roca · 9 al 12 de octubre de 2026"
+  >
+
+  <meta name="theme-color" content="#f3f1eb">
+
+  <link rel="stylesheet" href="style.css">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="apple-mobile-web-app-title" content="Roca con Lucho">
+
+</head>
+
+<body>
+
+  <!-- =====================================================
+       LANDING
+  ====================================================== -->
+
+  <section
+    id="landing"
+    class="landing"
+    aria-label="Cargando Roca con Lucho"
+  >
+
+    <div class="landingTop">
+      <p class="landingEyebrow">GENERAL ROCA · RÍO NEGRO</p>
+      <span class="landingDate">09—12 OCT 2026</span>
+    </div>
+
+    <div class="landingImageWrap">
+      <img
+        id="landingImage"
+        src="assets/images/grupal-caricatura.jpg"
+        alt="La banda de Roca con Lucho"
+        class="landingImage"
+      >
+    </div>
+
+    <div class="landingTitle">
+      <p class="landingNumber">09—12</p>
+
+      <h1>
+        ROCA<br>
+        CON LUCHO
+      </h1>
+    </div>
+
+    <div class="landingLoading">
+
+      <div class="landingStatusRow">
+
+        <p
+          id="landingStatus"
+          class="landingStatus"
+          aria-live="polite"
+        >
+          Emilio ya se está preparando…
+        </p>
+
+        <strong
+          id="landingPercent"
+          class="landingPercent"
+        >
+          0%
+        </strong>
+
+      </div>
+
+      <div class="landingProgress">
+
+        <div
+          id="landingProgressFill"
+          class="landingProgressFill"
+          style="width: 0%"
+        ></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       APP
+  ====================================================== -->
+
+  <main
+    id="mainApp"
+    class="app appHidden"
+  >
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <p class="eyebrow">
+        GENERAL ROCA · RÍO NEGRO
+      </p>
+
+      <button
+        id="themeToggle"
+        class="iconButton"
+        type="button"
+        aria-label="Cambiar modo de color"
+      >
+        ◐
+      </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+      <p class="heroNumber">
+        09—12
+      </p>
+
+      <h1>
+        ROCA<br>
+        CON LUCHO
+      </h1>
+
+      <div class="heroMeta">
+        <span>OCT 2026</span>
+        <span>GENERAL ROCA</span>
+      </div>
+
+    </section>
+
+
+    <!-- FOTO GRUPAL -->
+
+    <section class="visualCard">
+
+      <img
+        id="groupImage"
+        src="assets/images/grupal-caricatura.jpg"
+        alt="La banda rumbo a General Roca"
+        class="groupImage"
+      >
+
+    </section>
+
+
+    <!-- =====================================================
+         COUNTDOWN
+    ====================================================== -->
+
+    <section class="countdownPanel">
+
+      <div class="sectionHead">
+
+        <p
+          id="countdownLabel"
+          class="sectionLabel"
+        >
+          FALTAN
+        </p>
+
+        <span id="tripPhase">
+          PREVIA
+        </span>
+
+      </div>
+
+      <div class="countdownMain">
+
+        <span id="days">
+          00
+        </span>
+
+        <small id="countdownUnit">
+          DÍAS
+        </small>
+
+      </div>
+
+      <div class="digitalClock">
+
+        <div>
+          <strong id="hours">00</strong>
+          <small>HORAS</small>
+        </div>
+
+        <span>:</span>
+
+        <div>
+          <strong id="minutes">00</strong>
+          <small>MIN</small>
+        </div>
+
+        <span>:</span>
+
+        <div>
+          <strong id="seconds">00</strong>
+          <small>SEG</small>
+        </div>
+
+      </div>
+
+      <p
+        id="statusMessage"
+        class="statusMessage"
+      >
+        Cada vez falta menos.
+      </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         PREPARACIÓN
+    ====================================================== -->
+
+    <section class="section">
+
+      <div class="sectionHead">
+
+        <div>
+
+          <p class="sectionLabel">
+            PREPARACIÓN
+          </p>
+
+          <h2>
+            ¿Ya está todo?
+          </h2>
+
+        </div>
+
+        <strong id="prepPercent">
+          0%
+        </strong>
+
+      </div>
+
+      <div class="bar">
+        <div
+          id="prepFill"
+          class="barFill"
+        ></div>
+      </div>
+
+      <p
+        id="prepStatus"
+        class="sectionNote"
+      >
+        Marcá lo que ya tenés listo.
+      </p>
+
+
+      <div class="checklist">
+
+        <!-- DOCUMENTACIÓN -->
+
+        <div class="checkGroup">
+
+          <p class="checkTitle">
+            DOCUMENTACIÓN
+          </p>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="documento"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>DNI</span>
+
+          </label>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="pasaje"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Pasaje / reserva</span>
+
+          </label>
+
+        </div>
+
+
+        <!-- ROPA -->
+
+        <div class="checkGroup">
+
+          <p class="checkTitle">
+            ROPA
+          </p>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="ropa"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Ropa para 3 días</span>
+
+          </label>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="abrigo"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Abrigo</span>
+
+          </label>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="zapatillas"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Zapatillas cómodas</span>
+
+          </label>
+
+        </div>
+
+
+        <!-- TECNOLOGÍA -->
+
+        <div class="checkGroup">
+
+          <p class="checkTitle">
+            TECNOLOGÍA
+          </p>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="cargador"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Cargador</span>
+
+          </label>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="Celular"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Celular</span>
+
+          </label>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="auriculares"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Auriculares</span>
+
+          </label>
+
+        </div>
+
+
+        <!-- PERSONAL -->
+
+        <div class="checkGroup">
+
+          <p class="checkTitle">
+            PERSONAL
+          </p>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="higiene"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Higiene personal</span>
+
+          </label>
+
+          <label class="checkItem">
+
+            <input
+              type="checkbox"
+              data-check="medicacion"
+            >
+
+            <span class="fakeCheck"></span>
+            <span>Medicaciones</span>
+
+          </label>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROGRESO
+    ====================================================== -->
+
+    <section class="section">
+
+      <div class="sectionHead">
+
+        <div>
+
+          <p
+            id="progressLabel"
+            class="sectionLabel"
+          >
+            PROGRESO AL VIAJE
+          </p>
+
+          <h2 id="progressTitle">
+            La previa
+          </h2>
+
+        </div>
+
+        <strong id="progressText">
+          0%
+        </strong>
+
+      </div>
+
+      <div class="bar">
+
+        <div
+          id="progressFill"
+          class="barFill"
+        ></div>
+
+      </div>
+
+      <p
+        id="progressMessage"
+        class="sectionNote"
+      >
+        La cuenta regresiva arrancó.
+      </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         LA BANDA
+    ====================================================== -->
+
+    <section class="section">
+
+      <div class="sectionHead">
+
+        <div>
+
+          <p class="sectionLabel">
+            LA BANDA
+          </p>
+
+          <h2>
+            Ocho rumbo a Roca
+          </h2>
+
+        </div>
+
+        <span class="bigNumber">
+          8
+        </span>
+
+      </div>
+
+      <div class="peopleGrid">
+        <span>Mariano</span>
+        <span>Juan</span>
+        <span>Lea</span>
+        <span>Santi</span>
+        <span>Guido</span>
+        <span>Sebote</span>
+        <span>Pablo</span>
+        <span>Ponchi</span>
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LUCIANO
+    ====================================================== -->
+
+    <section class="hostCard">
+
+      <div class="hostText">
+
+        <p class="sectionLabel">
+          EN DESTINO
+        </p>
+
+        <h2>
+          Nos espera<br>
+          Luciano
+        </h2>
+
+        <p>
+          General Roca · Río Negro
+        </p>
+
+      </div>
+
+      <div class="hostImageWrap">
+
+        <img
+          src="assets/images/lucho.jpg"
+          alt="Luciano"
+          class="hostImage"
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRÓXIMO MOMENTO
+    ====================================================== -->
+
+    <section class="section nextSection">
+
+      <p class="sectionLabel">
+        PRÓXIMO MOMENTO
+      </p>
+
+      <div class="nextEvent">
+
+        <div
+          id="nextEventIcon"
+          class="nextIcon"
+        >
+          ✈
+        </div>
+
+        <div class="nextInfo">
+
+          <h2 id="nextTitle">
+            Vuelo AEP → NQN
+          </h2>
+
+          <p id="nextDate">
+            VIE 9 OCT · 19:55
+          </p>
+
+          <small id="nextDetail">
+            Llegada 21:55 · duración 2 h
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VUELOS
+    ====================================================== -->
+
+    <section class="section">
+
+      <p class="sectionLabel">
+        VUELOS
+      </p>
+
+      <!-- IDA -->
+
+      <article class="flight">
+
+        <div class="flightTop">
+          <strong>IDA</strong>
+          <span>VIE 9 OCT</span>
+        </div>
+
+        <div class="flightRoute">
+
+          <div class="airport">
+            <strong>19:55</strong>
+            <span>AEP</span>
+          </div>
+
+          <div class="flightTrack">
+            <small>2 H</small>
+            <div class="line"></div>
+            <span>✈</span>
+          </div>
+
+          <div class="airport end">
+            <strong>21:55</strong>
+            <span>NQN</span>
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- VUELTA -->
+
+      <article class="flight">
+
+        <div class="flightTop">
+          <strong>VUELTA</strong>
+          <span>LUN 12 OCT</span>
+        </div>
+
+        <div class="flightRoute">
+
+          <div class="airport">
+            <strong>17:35</strong>
+            <span>NQN</span>
+          </div>
+
+          <div class="flightTrack">
+            <small>1 H 40</small>
+            <div class="line"></div>
+            <span>✈</span>
+          </div>
+
+          <div class="airport end">
+            <strong>19:15</strong>
+            <span>AEP</span>
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOJA DE RUTA
+    ====================================================== -->
+
+    <section class="section">
+
+      <div class="sectionHead">
+
+        <div>
+
+          <p class="sectionLabel">
+            HOJA DE RUTA
+          </p>
+
+          <h2>
+            Viernes a lunes
+          </h2>
+
+        </div>
+
+        <button
+          id="routeButton"
+          class="miniButton"
+          type="button"
+        >
+          OCULTAR
+        </button>
+
+      </div>
+
+      <div
+        id="timeline"
+        class="timeline"
+      >
+
+        <article>
+
+          <time>
+            VIE · 19:55
+          </time>
+
+          <div>
+            <strong>
+              Salida desde Aeroparque
+            </strong>
+
+            <span>
+              AEP → NQN
+            </span>
+          </div>
+
+        </article>
+
+
+        <article>
+
+          <time>
+            21:55
+          </time>
+
+          <div>
+            <strong>
+              Llegada a Neuquén
+            </strong>
+
+            <span>
+              Aeropuerto Presidente Perón
+            </span>
+          </div>
+
+        </article>
+
+
+        <article>
+
+          <time>
+            NOCHE
+          </time>
+
+          <div>
+            <strong>
+              Neuquén → General Roca
+            </strong>
+
+            <span>
+              Traslado hacia el hotel
+            </span>
+          </div>
+
+        </article>
+
+
+        <article>
+
+          <time>
+            ROCA
+          </time>
+
+          <div>
+            <strong>
+              Luciano se suma
+            </strong>
+
+            <span>
+              Empieza oficialmente Roca con Lucho
+            </span>
+          </div>
+
+        </article>
+
+
+        <article>
+
+          <time>
+            LUN · 17:35
+          </time>
+
+          <div>
+            <strong>
+              Regreso
+            </strong>
+
+            <span>
+              NQN → AEP
+            </span>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DESCUBRIR ROCA
+    ====================================================== -->
+
+    <section class="discoverIntro">
+
+      <span class="discoverIndex">
+        GUÍA
+      </span>
+
+      <p>
+        EL FINDE EN ROCA
+      </p>
+
+      <h2>
+        DESCUBRIR<br>
+        ROCA
+      </h2>
+
+      <span>
+        HACER · COMER · COMPRAR · NOCHE
+      </span>
+
+    </section>
+
+
+    <!-- =====================================================
+         01 · IMPERDIBLES
+    ====================================================== -->
+
+    <section class="section discoverSection">
+
+      <div class="discoverHeader">
+
+        <span class="discoverNumber">
+          01
+        </span>
+
+        <div>
+
+          <p class="sectionLabel">
+            IMPERDIBLES
+          </p>
+
+          <h2>
+            Roca afuera del centro
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <!-- PASO CÓRDOBA -->
+
+      <a
+        class="discoverFeature"
+        href="https://www.google.com/maps/search/?api=1&amp;query=Paso+Córdoba+General+Roca+Río+Negro"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <div>
+
+          <span class="placeTag">
+            NATURALEZA
+          </span>
+
+          <h3>
+            Paso Córdoba
+          </h3>
+
+          <p>
+            Río Negro, bardas, senderos y paisaje patagónico.
+            Uno de los lugares para salir de la ciudad y ver
+            la otra cara de Roca.
+          </p>
+
+          <small>
+            ≈ 12 KM DE LA CIUDAD · ABRIR MAPA ↗
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <div class="discoverList">
+
+        <!-- VALLE DE LA LUNA -->
+
+        <a
+          class="discoverItem"
+          href="https://www.google.com/maps/search/?api=1&amp;query=Valle+de+la+Luna+Paso+Córdoba+General+Roca"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div>
+
+            <span class="placeTag">
+              BARDAS
+            </span>
+
+            <strong>
+              Valle de la Luna
+            </strong>
+
+            <p>
+              Formaciones, senderos y paisaje de bardas
+              dentro del área de Paso Córdoba.
+            </p>
+
+          </div>
+
+        </a>
+
+
+        <!-- TRES CRUCES -->
+
+        <a
+          class="discoverItem"
+          href="https://www.google.com/maps/search/?api=1&amp;query=Mirador+Tres+Cruces+Paso+Córdoba+General+Roca"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div>
+
+            <span class="placeTag">
+              MIRADOR
+            </span>
+
+            <strong>
+              Tres Cruces
+            </strong>
+
+            <p>
+              Mirador sobre el paisaje del Alto Valle,
+              las bardas y el entorno del Río Negro.
+            </p>
+
+          </div>
+
+        </a>
+
+
+        <!-- ALTO VALLE -->
+
+        <article class="discoverItem">
+
+          <div>
+
+            <span class="placeTag">
+              ALTO VALLE
+            </span>
+
+            <strong>
+              Chacras y fruticultura
+            </strong>
+
+            <p>
+              Canales, manzanas, peras y el paisaje
+              productivo característico de la región.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         02 · COMER & TOMAR
+    ====================================================== -->
+
+    <section class="section discoverSection">
+
+      <div class="discoverHeader">
+
+        <span class="discoverNumber">
+          02
+        </span>
+
+        <div>
+
+          <p class="sectionLabel">
+            COMER & TOMAR
+          </p>
+
+          <h2>
+            Cerca y fácil
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="poiList">
+
+        <!-- LION'S -->
+
+        <a
+          class="poi"
+          href="https://www.google.com/maps/search/?api=1&amp;query=-39.031284317295054,-67.57615013295612"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div>
+
+            <span class="placeTag">
+              HELADO
+            </span>
+
+            <strong>
+              Lion's
+            </strong>
+
+            <small>
+              ≈ 0.4 KM DEL HOTEL
+            </small>
+
+            <p>
+              A pocas cuadras de Bardas del Sur.
+            </p>
+
+          </div>
+
+          <span>↗</span>
+
+        </a>
+
+
+        <!-- OKTOBER -->
+
+        <a
+          class="poi"
+          href="https://www.google.com/maps/search/?api=1&amp;query=-39.031811079992615,-67.57640102146632"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div>
+
+            <span class="placeTag">
+              BAR
+            </span>
+
+            <strong>
+              Oktober Bar
+            </strong>
+
+            <small>
+              ≈ 0.3 KM DEL HOTEL
+            </small>
+
+            <p>
+              Una de las opciones más cercanas para arrancar.
+            </p>
+
+          </div>
+
+          <span>↗</span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         03 · ABASTECIMIENTO
+    ====================================================== -->
+
+    <section class="section discoverSection">
+
+      <div class="discoverHeader">
+
+        <span class="discoverNumber">
+          03
+        </span>
+
+        <div>
+
+          <p class="sectionLabel">
+            ABASTECIMIENTO
+          </p>
+
+          <h2>
+            Operación finde
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="poiList">
+
+        <!-- SUPERMERCADO -->
+
+        <a
+          class="poi"
+          href="https://www.google.com/maps/search/?api=1&amp;query=ChangoMas+General+Roca+Rio+Negro"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div>
+
+            <span class="placeTag">
+              SUPERMERCADO
+            </span>
+
+            <strong>
+              ChangoMâs
+            </strong>
+
+            <small>
+              COMPRA GRANDE
+            </small>
+
+            <p>
+              Desayuno, comida, agua, gaseosas,
+              snacks y provisiones para el finde.
+            </p>
+
+          </div>
+
+          <span>↗</span>
+
+        </a>
+
+
+        <!-- FARMACIA -->
+
+        <a
+          class="poi"
+          href="https://www.google.com/maps/search/?api=1&amp;query=Farmacia+Estuardo+Romero+General+Roca"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div>
+
+            <span class="placeTag">
+              FARMACIA
+            </span>
+
+            <strong>
+              Estuardo Romero
+            </strong>
+
+            <small>
+              CENTRO
+            </small>
+
+            <p>
+              Una referencia céntrica para tener guardada
+              ante cualquier necesidad.
+            </p>
+
+          </div>
+
+          <span>↗</span>
+
+        </a>
+
+
+        <!-- BEBIDAS -->
+
+        <a
+          class="poi"
+          href="https://www.google.com/maps/search/?api=1&amp;query=vinoteca+bebidas+General+Roca+Rio+Negro"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div>
+
+            <span class="placeTag">
+              BEBIDAS
+            </span>
+
+            <strong>
+              Bebidas
+            </strong>
+
+            <small>
+              BIRRA · FERNET · AGUA · GASEOSAS
+            </small>
+
+            <p>
+              Mapa directo para resolver abastecimiento
+              de bebidas cerca de donde estén.
+            </p>
+
+          </div>
+
+          <span>↗</span>
+
+        </a>
+
+
+        <!-- HIELO -->
+
+        <a
+          class="poi"
+          href="https://www.google.com/maps/search/?api=1&amp;query=hielo+General+Roca+Rio+Negro"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div>
+
+            <span class="placeTag">
+              HIELO
+            </span>
+
+            <strong>
+              Hielo
+            </strong>
+
+            <small>
+              MISIÓN CRÍTICA
+            </small>
+
+            <p>
+              Búsqueda directa en Maps para encontrar
+              la opción disponible más conveniente.
+            </p>
+
+          </div>
+
+          <span>↗</span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         04 · NOCHE
+    ====================================================== -->
+
+    <section class="section discoverSection nightSection">
+
+      <div class="discoverHeader">
+
+        <span class="discoverNumber">
+          04
+        </span>
+
+        <div>
+
+          <p class="sectionLabel">
+            CUANDO BAJA EL SOL
+          </p>
+
+          <h2>
+            La noche de Roca
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="nightPlaces">
+
+        <!-- OKTOBER -->
+
+        <a
+          class="nightPlace"
+          href="https://www.google.com/maps/search/?api=1&amp;query=-39.031811079992615,-67.57640102146632"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="nightPlaceNumber">
+            01
+          </div>
+
+          <div class="nightPlaceInfo">
+
+            <span class="nightTag">
+              PRIMERA PARADA
+            </span>
+
+            <strong>
+              Oktober Bar
+            </strong>
+
+            <p>
+              Muy cerca del hotel.
+              Buena opción para arrancar sin demasiada logística.
+            </p>
+
+            <small>
+              ≈ 0.3 KM DEL HOTEL
+            </small>
+
+          </div>
+
+          <span class="nightArrow">
+            ↗
+          </span>
+
+        </a>
+
+
+        <!-- BARES -->
+
+        <a
+          class="nightPlace"
+          href="https://www.google.com/maps/search/?api=1&amp;query=bares+General+Roca+Rio+Negro"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="nightPlaceNumber">
+            02
+          </div>
+
+          <div class="nightPlaceInfo">
+
+            <span class="nightTag">
+              BARES
+            </span>
+
+            <strong>
+              Seguir la noche
+            </strong>
+
+            <p>
+              Abrir Maps y elegir según cercanía,
+              horario y movimiento de esa noche.
+            </p>
+
+            <small>
+              VER OPCIONES ABIERTAS ↗
+            </small>
+
+          </div>
+
+          <span class="nightArrow">
+            ↗
+          </span>
+
+        </a>
+
+
+        <!-- BOLICHES -->
+
+        <a
+          class="nightPlace"
+          href="https://www.google.com/maps/search/?api=1&amp;query=discotecas+boliches+General+Roca+Rio+Negro"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="nightPlaceNumber">
+            03
+          </div>
+
+          <div class="nightPlaceInfo">
+
+            <span class="nightTag">
+              LATE NIGHT
+            </span>
+
+            <strong>
+              Boliches
+            </strong>
+
+            <p>
+              Para cuando el plan deja de ser
+              solamente tomar algo.
+            </p>
+
+            <small>
+              REVISAR EVENTOS Y HORARIOS DEL DÍA ↗
+            </small>
+
+          </div>
+
+          <span class="nightArrow">
+            ↗
+          </span>
+
+        </a>
+
+      </div>
+
+
+      <p class="nightFootnote">
+        LA NOCTURNIDAD CAMBIA SEGÚN EL DÍA ·
+        REVISAR MAPS ANTES DE SALIR
+      </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         05 · CERCA DEL HOTEL
+    ====================================================== -->
+
+    <section class="section discoverSection">
+
+      <div class="discoverHeader">
+
+        <span class="discoverNumber">
+          05
+        </span>
+
+        <div>
+
+          <p class="sectionLabel">
+            CERCA DEL HOTEL
+          </p>
+
+          <h2>
+            Radio de operaciones
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="distanceList">
+
+        <!-- OKTOBER -->
+
+        <a
+          class="distanceRow"
+          href="https://www.google.com/maps/dir/?api=1&amp;origin=-39.034455080303665,-67.57722179136542&amp;destination=-39.031811079992615,-67.57640102146632"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <strong>
+            0.3
+          </strong>
+
+          <span>
+            KM
+          </span>
+
+          <p>
+            Oktober Bar ↗
+          </p>
+
+        </a>
+
+
+        <!-- LION'S -->
+
+        <a
+          class="distanceRow"
+          href="https://www.google.com/maps/dir/?api=1&amp;origin=-39.034455080303665,-67.57722179136542&amp;destination=-39.031284317295054,-67.57615013295612"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <strong>
+            0.4
+          </strong>
+
+          <span>
+            KM
+          </span>
+
+          <p>
+            Heladería Lion's ↗
+          </p>
+
+        </a>
+
+
+        <!-- LUCIANO -->
+
+        <a
+          class="distanceRow"
+          href="https://www.google.com/maps/dir/?api=1&amp;origin=-39.034455080303665,-67.57722179136542&amp;destination=-39.038888889,-67.557722222"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <strong>
+            1.8
+          </strong>
+
+          <span>
+            KM
+          </span>
+
+          <p>
+            Casa de Luciano ↗
+          </p>
+
+        </a>
+
+      </div>
+
+      <p class="sectionNote">
+        Distancias aproximadas en línea recta desde Bardas del Sur.
+        El recorrido real puede variar.
+      </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         06 · DIRECCIONES ÚTILES
+    ====================================================== -->
+
+    <section class="section">
+
+      <div class="discoverHeader">
+
+        <span class="discoverNumber">
+          06
+        </span>
+
+        <div>
+
+          <p class="sectionLabel">
+            DIRECCIONES ÚTILES
+          </p>
+
+          <h2>
+            Guardadas
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="placeList">
+
+        <!-- HOTEL -->
+
+        <article class="place">
+
+          <div class="placeIndex">
+            01
+          </div>
+
+          <div class="placeText">
+
+            <strong>
+              Bardas del Sur
+            </strong>
+
+            <span>
+              Hotel · Base de operaciones
+            </span>
+
+          </div>
+
+          <a
+            class="mapButton"
+            href="https://www.google.com/maps/search/?api=1&amp;query=-39.034455080303665,-67.57722179136542"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir Bardas del Sur en Google Maps"
+          >
+            ↗
+          </a>
+
+        </article>
+
+
+        <!-- LUCIANO -->
+
+        <article class="place">
+
+          <div class="placeIndex">
+            02
+          </div>
+
+          <div class="placeText">
+
+            <strong>
+              Casa de Luciano
+            </strong>
+
+            <span>
+              General Roca
+            </span>
+
+          </div>
+
+          <a
+            class="mapButton"
+            href="https://www.google.com/maps/search/?api=1&amp;query=-39.038888889,-67.557722222"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir casa de Luciano en Google Maps"
+          >
+            ↗
+          </a>
+
+        </article>
+
+
+        <!-- CASA DEL RÍO -->
+
+        <article class="place">
+
+          <div class="placeIndex">
+            03
+          </div>
+
+          <div class="placeText">
+
+            <strong>
+              Casa del Río
+            </strong>
+
+            <span>
+              Paso Córdoba
+            </span>
+
+          </div>
+
+          <a
+            class="mapButton"
+            href="https://www.google.com/maps/search/?api=1&amp;query=Paso+Córdoba+Río+Negro"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir Paso Córdoba en Google Maps"
+          >
+            ↗
+          </a>
+
+        </article>
+
+
+        <!-- NQN -->
+
+        <article class="place">
+
+          <div class="placeIndex">
+            04
+          </div>
+
+          <div class="placeText">
+
+            <strong>
+              Aeropuerto de Neuquén
+            </strong>
+
+            <span>
+              NQN
+            </span>
+
+          </div>
+
+          <a
+            class="mapButton"
+            href="https://www.google.com/maps/search/?api=1&amp;query=-38.95126542520285,-68.13999625994903"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir aeropuerto de Neuquén en Google Maps"
+          >
+            ↗
+          </a>
+
+        </article>
+
+
+        <!-- AEP -->
+
+        <article class="place">
+
+          <div class="placeIndex">
+            05
+          </div>
+
+          <div class="placeText">
+
+            <strong>
+              Aeroparque Jorge Newbery
+            </strong>
+
+            <span>
+              AEP
+            </span>
+
+          </div>
+
+          <a
+            class="mapButton"
+            href="https://www.google.com/maps/search/?api=1&amp;query=-34.55837828768513,-58.41575316629089"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir Aeroparque en Google Maps"
+          >
+            ↗
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         UN POCO DE ROCA
+    ====================================================== -->
+
+    <section class="historySection">
+
+      <p class="sectionLabel">
+        UN POCO DE ROCA
+      </p>
+
+      <h2>
+        Alto Valle.<br>
+        Bardas.<br>
+        Río.
+      </h2>
+
+      <p>
+        General Roca está en el Alto Valle de Río Negro.
+        En 1879 se estableció el Fuerte General Roca
+        en el área conocida como Fisque Menuco,
+        territorio previamente habitado por comunidades mapuche.
+      </p>
+
+      <p>
+        El desarrollo posterior del riego transformó
+        profundamente el paisaje: chacras, canales,
+        peras y manzanas conviven con las bardas
+        y el ambiente árido de la Patagonia.
+      </p>
+
+      <blockquote>
+        Para entender Roca:
+        centro → chacras → bardas → Paso Córdoba.
+      </blockquote>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOTO GENERAL ROCA
+    ====================================================== -->
+
+    <section class="destinationCard destinationColor">
+
+      <img
+        src="assets/images/hero-roca.jpg"
+        alt="General Roca, Río Negro"
+        class="destinationImage"
+      >
+
+      <div class="destinationOverlay">
+
+        <p>
+          DESTINO
+        </p>
+
+        <strong>
+          GENERAL<br>
+          ROCA
+        </strong>
+
+        <span>
+          RÍO NEGRO
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COMPARTIR · DESACTIVADO
+    ====================================================== -->
+
+    
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+      <strong>
+        ROCA CON LUCHO
+      </strong>
+
+      <span>
+        09—12 OCT 2026
+      </span>
+
+    </footer>
+
+  </main>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script src="app.js"></script>
+
+</body>
+</html>
