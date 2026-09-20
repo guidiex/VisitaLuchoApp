@@ -1,6 +1,6 @@
 /* =========================================================
    ROCA CON LUCHO · 2026
-   APP.JS
+   APP.JS · VERSIÓN SIMPLIFICADA
    ========================================================= */
 
 
@@ -9,16 +9,13 @@
    ========================================================= */
 
 const trip = {
-  countdownStart:
-    new Date("2026-09-04T00:00:00-03:00"),
-
   departure:
     new Date("2026-10-09T19:55:00-03:00"),
 
   arrivalNeuquen:
     new Date("2026-10-09T21:55:00-03:00"),
 
-  // Hora estimada provisoria de llegada a Roca
+  // Hora estimada de llegada a General Roca
   arrivalRoca:
     new Date("2026-10-09T23:30:00-03:00"),
 
@@ -27,51 +24,6 @@ const trip = {
 
   returnArrival:
     new Date("2026-10-12T19:15:00-03:00")
-};
-
-
-/* =========================================================
-   UBICACIONES
-   ========================================================= */
-
-const locations = {
-
-  hotel: {
-    name: "Bardas del Sur",
-    lat: -39.034455080303665,
-    lng: -67.57722179136542
-  },
-
-  luciano: {
-    name: "Casa de Luciano",
-    lat: -39.038888889,
-    lng: -67.557722222
-  },
-
-  nqn: {
-    name: "Aeropuerto Neuquén",
-    lat: -38.95126542520285,
-    lng: -68.13999625994903
-  },
-
-  aep: {
-    name: "Aeroparque Jorge Newbery",
-    lat: -34.55837828768513,
-    lng: -58.41575316629089
-  },
-
-  lions: {
-    name: "Heladería Lion's",
-    lat: -39.031284317295054,
-    lng: -67.57615013295612
-  },
-
-  oktober: {
-    name: "Oktober Bar",
-    lat: -39.031811079992615,
-    lng: -67.57640102146632
-  }
-
 };
 
 
@@ -122,7 +74,6 @@ const mainApp =
 const groupImage =
   document.getElementById("groupImage");
 
-
 const daysEl =
   document.getElementById("days");
 
@@ -134,7 +85,6 @@ const minutesEl =
 
 const secondsEl =
   document.getElementById("seconds");
-
 
 const countdownLabel =
   document.getElementById("countdownLabel");
@@ -148,54 +98,8 @@ const tripPhase =
 const statusMessage =
   document.getElementById("statusMessage");
 
-
-const progressLabel =
-  document.getElementById("progressLabel");
-
-const progressTitle =
-  document.getElementById("progressTitle");
-
-const progressText =
-  document.getElementById("progressText");
-
-const progressFill =
-  document.getElementById("progressFill");
-
-const progressMessage =
-  document.getElementById("progressMessage");
-
-
-const prepPercent =
-  document.getElementById("prepPercent");
-
-const prepFill =
-  document.getElementById("prepFill");
-
-const prepStatus =
-  document.getElementById("prepStatus");
-
-
-const nextEventIcon =
-  document.getElementById("nextEventIcon");
-
-const nextTitle =
-  document.getElementById("nextTitle");
-
-const nextDate =
-  document.getElementById("nextDate");
-
-const nextDetail =
-  document.getElementById("nextDetail");
-
-
 const themeToggle =
   document.getElementById("themeToggle");
-
-const routeButton =
-  document.getElementById("routeButton");
-
-const timeline =
-  document.getElementById("timeline");
 
 
 /* =========================================================
@@ -204,14 +108,6 @@ const timeline =
 
 function pad(value) {
   return String(value).padStart(2, "0");
-}
-
-
-function clamp(value, min, max) {
-  return Math.min(
-    Math.max(value, min),
-    max
-  );
 }
 
 
@@ -224,7 +120,6 @@ function getTimeParts(milliseconds) {
     );
 
   return {
-
     days:
       Math.floor(
         totalSeconds / 86400
@@ -242,7 +137,6 @@ function getTimeParts(milliseconds) {
 
     seconds:
       totalSeconds % 60
-
   };
 }
 
@@ -264,62 +158,9 @@ function shuffle(array) {
 
     [copy[i], copy[j]] =
       [copy[j], copy[i]];
-
   }
 
   return copy;
-}
-
-
-/* =========================================================
-   DISTANCIAS
-   ========================================================= */
-
-function toRadians(degrees) {
-  return degrees * Math.PI / 180;
-}
-
-
-function calculateDistanceKm(
-  pointA,
-  pointB
-) {
-
-  const earthRadiusKm = 6371;
-
-  const dLat =
-    toRadians(
-      pointB.lat - pointA.lat
-    );
-
-  const dLng =
-    toRadians(
-      pointB.lng - pointA.lng
-    );
-
-  const lat1 =
-    toRadians(pointA.lat);
-
-  const lat2 =
-    toRadians(pointB.lat);
-
-
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(lat1) *
-    Math.cos(lat2) *
-    Math.sin(dLng / 2) ** 2;
-
-
-  const c =
-    2 *
-    Math.atan2(
-      Math.sqrt(a),
-      Math.sqrt(1 - a)
-    );
-
-
-  return earthRadiusKm * c;
 }
 
 
@@ -346,18 +187,13 @@ function updateGroupImages(
   const imagePath =
     getCurrentGroupImage(now);
 
-
   if (landingImage) {
-    landingImage.src =
-      imagePath;
+    landingImage.src = imagePath;
   }
-
 
   if (groupImage) {
-    groupImage.src =
-      imagePath;
+    groupImage.src = imagePath;
   }
-
 }
 
 
@@ -370,7 +206,6 @@ function runLanding() {
   if (!landing || !mainApp) {
 
     if (mainApp) {
-
       mainApp.classList.remove(
         "appHidden"
       );
@@ -378,7 +213,6 @@ function runLanding() {
       mainApp.classList.add(
         "appVisible"
       );
-
     }
 
     return;
@@ -398,23 +232,25 @@ function runLanding() {
   const messages =
     shuffle(landingMessages);
 
-
   let progress = 0;
-
   let lastMessageIndex = -1;
 
 
-  landingPercent.textContent =
-    "0%";
+  if (landingPercent) {
+    landingPercent.textContent = "0%";
+  }
 
-  landingProgressFill.style.width =
-    "0%";
+  if (landingProgressFill) {
+    landingProgressFill.style.width =
+      "0%";
+  }
 
-
-  landingStatus.textContent =
-    inRoca
-      ? "Luciano entrando en cuadro…"
-      : messages[0];
+  if (landingStatus) {
+    landingStatus.textContent =
+      inRoca
+        ? "Luciano entrando en cuadro…"
+        : messages[0];
+  }
 
 
   const reducedMotion =
@@ -447,14 +283,21 @@ function runLanding() {
         );
 
 
-      landingPercent.textContent =
-        `${progress}%`;
+      if (landingPercent) {
+        landingPercent.textContent =
+          `${progress}%`;
+      }
 
-      landingProgressFill.style.width =
-        `${progress}%`;
+      if (landingProgressFill) {
+        landingProgressFill.style.width =
+          `${progress}%`;
+      }
 
 
-      if (progress < 94) {
+      if (
+        progress < 94 &&
+        landingStatus
+      ) {
 
         const messageIndex =
           Math.min(
@@ -476,22 +319,20 @@ function runLanding() {
 
           landingStatus.textContent =
             messages[messageIndex];
-
         }
-
       }
 
 
       if (
         progress >= 94 &&
-        progress < 100
+        progress < 100 &&
+        landingStatus
       ) {
 
         landingStatus.textContent =
           inRoca
             ? "Lucho se suma a la banda…"
             : "Roca, allá vamos…";
-
       }
 
 
@@ -500,10 +341,12 @@ function runLanding() {
         clearInterval(interval);
 
 
-        landingStatus.textContent =
-          inRoca
-            ? "LUCHO SE UNIÓ A LA BANDA."
-            : "ROCA, ALLÁ VAMOS.";
+        if (landingStatus) {
+          landingStatus.textContent =
+            inRoca
+              ? "LUCHO SE UNIÓ A LA BANDA."
+              : "ROCA, ALLÁ VAMOS.";
+        }
 
 
         const exitDelay =
@@ -527,11 +370,9 @@ function runLanding() {
           );
 
         }, exitDelay);
-
       }
 
     }, intervalTime);
-
 }
 
 
@@ -546,7 +387,6 @@ function renderCountdown(
 
   const difference =
     target - now;
-
 
   const parts =
     getTimeParts(difference);
@@ -571,76 +411,29 @@ function renderCountdown(
     secondsEl.textContent =
       pad(parts.seconds);
   }
-
 }
 
 
 /* =========================================================
-   PROGRESO
-   ========================================================= */
-
-function setProgress(
-  start,
-  end,
-  now
-) {
-
-  const total =
-    end - start;
-
-
-  if (total <= 0) {
-    return 0;
-  }
-
-
-  const elapsed =
-    now - start;
-
-
-  const value =
-    clamp(
-      (elapsed / total) * 100,
-      0,
-      100
-    );
-
-
-  if (progressFill) {
-
-    progressFill.style.width =
-      `${value}%`;
-
-  }
-
-
-  if (progressText) {
-
-    progressText.textContent =
-      `${Math.round(value)}%`;
-
-  }
-
-
-  return value;
-}
-
-
-/* =========================================================
-   PREVIA
+   ESTADOS DEL VIAJE
    ========================================================= */
 
 function stateBeforeTrip(now) {
 
-  tripPhase.textContent =
-    "PREVIA";
+  if (tripPhase) {
+    tripPhase.textContent =
+      "PREVIA";
+  }
 
+  if (countdownLabel) {
+    countdownLabel.textContent =
+      "FALTAN";
+  }
 
-  countdownLabel.textContent =
-    "FALTAN";
-
-  countdownUnit.textContent =
-    "DÍAS";
+  if (countdownUnit) {
+    countdownUnit.textContent =
+      "DÍAS";
+  }
 
 
   renderCountdown(
@@ -649,75 +442,14 @@ function stateBeforeTrip(now) {
   );
 
 
-  const value =
-    setProgress(
-      trip.countdownStart,
-      trip.departure,
-      now
-    );
-
-
-  progressLabel.textContent =
-    "PROGRESO AL VIAJE";
-
-  progressTitle.textContent =
-    "La previa";
-
-
-  if (value < 25) {
-
-    statusMessage.textContent =
-      "La cuenta regresiva empezó.";
-
-    progressMessage.textContent =
-      "Roca todavía parece lejos.";
-
-  }
-
-  else if (value < 50) {
-
-    statusMessage.textContent =
-      "Cada vez falta menos.";
-
-    progressMessage.textContent =
-      "Ya arrancamos.";
-
-  }
-
-  else if (value < 75) {
-
-    statusMessage.textContent =
-      "Esto se empieza a sentir.";
-
-    progressMessage.textContent =
-      "Mitad de camino.";
-
-  }
-
-  else if (value < 90) {
-
-    statusMessage.textContent =
-      "Entramos en zona viaje.";
-
-    progressMessage.textContent =
-      "Roca está cada vez más cerca.";
-
-  }
-
-  else {
-
-    statusMessage.textContent =
-      "Esto ya está encima.";
-
-    progressMessage.textContent =
-      "Último tramo.";
-
-  }
-
-
   const hoursRemaining =
     (trip.departure - now) /
     3600000;
+
+
+  if (!statusMessage) {
+    return;
+  }
 
 
   if (
@@ -728,41 +460,49 @@ function stateBeforeTrip(now) {
     statusMessage.textContent =
       "HOY NOS VAMOS.";
 
-    progressMessage.textContent =
-      "Últimas horas.";
-
+    return;
   }
 
 
-  nextEventIcon.textContent =
-    "✈";
+  const daysRemaining =
+    (trip.departure - now) /
+    86400000;
 
-  nextTitle.textContent =
-    "Vuelo AEP → NQN";
 
-  nextDate.textContent =
-    "VIE 9 OCT · 19:55";
+  if (daysRemaining <= 7) {
 
-  nextDetail.textContent =
-    "Llegada 21:55 · duración 2 h";
+    statusMessage.textContent =
+      "Lucho ya nos espera.";
 
+  } else if (daysRemaining <= 30) {
+
+    statusMessage.textContent =
+      "Esto se empieza a sentir.";
+
+  } else {
+
+    statusMessage.textContent =
+      "Cada vez falta menos.";
+  }
 }
 
-
-/* =========================================================
-   VUELO DE IDA
-   ========================================================= */
 
 function stateFlightOut(now) {
 
-  tripPhase.textContent =
-    "IDA";
+  if (tripPhase) {
+    tripPhase.textContent =
+      "IDA";
+  }
 
-  countdownLabel.textContent =
-    "EN VUELO";
+  if (countdownLabel) {
+    countdownLabel.textContent =
+      "EN VUELO";
+  }
 
-  countdownUnit.textContent =
-    "PARA LLEGAR";
+  if (countdownUnit) {
+    countdownUnit.textContent =
+      "PARA LLEGAR";
+  }
 
 
   renderCountdown(
@@ -771,55 +511,29 @@ function stateFlightOut(now) {
   );
 
 
-  setProgress(
-    trip.departure,
-    trip.arrivalNeuquen,
-    now
-  );
-
-
-  progressLabel.textContent =
-    "VUELO";
-
-  progressTitle.textContent =
-    "AEP → NQN";
-
-  progressMessage.textContent =
-    "Rumbo a Neuquén.";
-
-  statusMessage.textContent =
-    "Ahora sí. Nos fuimos.";
-
-
-  nextEventIcon.textContent =
-    "↓";
-
-  nextTitle.textContent =
-    "Llegada a Neuquén";
-
-  nextDate.textContent =
-    "21:55 · NQN";
-
-  nextDetail.textContent =
-    "Después: rumbo a General Roca";
-
+  if (statusMessage) {
+    statusMessage.textContent =
+      "Ahora sí. Nos fuimos.";
+  }
 }
 
-
-/* =========================================================
-   TRASLADO A ROCA
-   ========================================================= */
 
 function stateTransfer(now) {
 
-  tripPhase.textContent =
-    "TRASLADO";
+  if (tripPhase) {
+    tripPhase.textContent =
+      "TRASLADO";
+  }
 
-  countdownLabel.textContent =
-    "RUMBO A ROCA";
+  if (countdownLabel) {
+    countdownLabel.textContent =
+      "RUMBO A ROCA";
+  }
 
-  countdownUnit.textContent =
-    "PARA LLEGAR";
+  if (countdownUnit) {
+    countdownUnit.textContent =
+      "PARA LLEGAR";
+  }
 
 
   renderCountdown(
@@ -828,55 +542,29 @@ function stateTransfer(now) {
   );
 
 
-  setProgress(
-    trip.arrivalNeuquen,
-    trip.arrivalRoca,
-    now
-  );
-
-
-  progressLabel.textContent =
-    "ÚLTIMO TRAMO";
-
-  progressTitle.textContent =
-    "Neuquén → Roca";
-
-  progressMessage.textContent =
-    "Ya estamos cerca.";
-
-  statusMessage.textContent =
-    "Lucho nos espera.";
-
-
-  nextEventIcon.textContent =
-    "●";
-
-  nextTitle.textContent =
-    "General Roca";
-
-  nextDate.textContent =
-    "RÍO NEGRO";
-
-  nextDetail.textContent =
-    "Empieza Roca con Lucho.";
-
+  if (statusMessage) {
+    statusMessage.textContent =
+      "Lucho nos espera.";
+  }
 }
 
-
-/* =========================================================
-   EN ROCA
-   ========================================================= */
 
 function stateInRoca(now) {
 
-  tripPhase.textContent =
-    "EN ROCA";
+  if (tripPhase) {
+    tripPhase.textContent =
+      "EN ROCA";
+  }
 
-  countdownLabel.textContent =
-    "QUEDAN";
+  if (countdownLabel) {
+    countdownLabel.textContent =
+      "QUEDAN";
+  }
 
-  countdownUnit.textContent =
-    "DÍAS";
+  if (countdownUnit) {
+    countdownUnit.textContent =
+      "DÍAS";
+  }
 
 
   renderCountdown(
@@ -885,101 +573,29 @@ function stateInRoca(now) {
   );
 
 
-  const value =
-    setProgress(
-      trip.arrivalRoca,
-      trip.returnDeparture,
-      now
-    );
-
-
-  progressLabel.textContent =
-    "VIAJE VIVIDO";
-
-  progressTitle.textContent =
-    "Roca con Lucho";
-
-
-  if (value < 25) {
-
+  if (statusMessage) {
     statusMessage.textContent =
-      "Esto recién empieza.";
-
-    progressMessage.textContent =
-      "Llegamos.";
-
+      "Lucho se incorporó.";
   }
-
-  else if (value < 50) {
-
-    statusMessage.textContent =
-      "Que dure.";
-
-    progressMessage.textContent =
-      "Roca mode.";
-
-  }
-
-  else if (value < 75) {
-
-    statusMessage.textContent =
-      "Mitad del viaje.";
-
-    progressMessage.textContent =
-      "Estamos en el corazón del finde.";
-
-  }
-
-  else if (value < 90) {
-
-    statusMessage.textContent =
-      "Hay que aprovechar.";
-
-    progressMessage.textContent =
-      "Último tramo.";
-
-  }
-
-  else {
-
-    statusMessage.textContent =
-      "ÚLTIMAS HORAS.";
-
-    progressMessage.textContent =
-      "Se viene la vuelta.";
-
-  }
-
-
-  nextEventIcon.textContent =
-    "✈";
-
-  nextTitle.textContent =
-    "Regreso NQN → AEP";
-
-  nextDate.textContent =
-    "LUN 12 OCT · 17:35";
-
-  nextDetail.textContent =
-    "Llegada 19:15 · duración 1 h 40";
-
 }
 
-
-/* =========================================================
-   VUELTA
-   ========================================================= */
 
 function stateReturnFlight(now) {
 
-  tripPhase.textContent =
-    "VUELTA";
+  if (tripPhase) {
+    tripPhase.textContent =
+      "VUELTA";
+  }
 
-  countdownLabel.textContent =
-    "VOLVIENDO";
+  if (countdownLabel) {
+    countdownLabel.textContent =
+      "VOLVIENDO";
+  }
 
-  countdownUnit.textContent =
-    "PARA LLEGAR";
+  if (countdownUnit) {
+    countdownUnit.textContent =
+      "PARA LLEGAR";
+  }
 
 
   renderCountdown(
@@ -988,107 +604,52 @@ function stateReturnFlight(now) {
   );
 
 
-  setProgress(
-    trip.returnDeparture,
-    trip.returnArrival,
-    now
-  );
-
-
-  progressLabel.textContent =
-    "VUELO DE REGRESO";
-
-  progressTitle.textContent =
-    "NQN → AEP";
-
-  progressMessage.textContent =
-    "Rumbo a Buenos Aires.";
-
-  statusMessage.textContent =
-    "Roca queda atrás.";
-
-
-  nextEventIcon.textContent =
-    "⌂";
-
-  nextTitle.textContent =
-    "Buenos Aires";
-
-  nextDate.textContent =
-    "19:15 · AEP";
-
-  nextDetail.textContent =
-    "Fin del viaje.";
-
+  if (statusMessage) {
+    statusMessage.textContent =
+      "Roca queda atrás.";
+  }
 }
 
 
-/* =========================================================
-   FINAL
-   ========================================================= */
-
 function stateFinished() {
 
-  tripPhase.textContent =
-    "FIN";
+  if (tripPhase) {
+    tripPhase.textContent =
+      "FIN";
+  }
 
-  countdownLabel.textContent =
-    "VIAJE";
+  if (countdownLabel) {
+    countdownLabel.textContent =
+      "VIAJE";
+  }
 
-  countdownUnit.textContent =
-    "COMPLETADO";
-
-
-  daysEl.textContent =
-    "0";
-
-  hoursEl.textContent =
-    "00";
-
-  minutesEl.textContent =
-    "00";
-
-  secondsEl.textContent =
-    "00";
-
-
-  if (progressFill) {
-    progressFill.style.width =
-      "100%";
+  if (countdownUnit) {
+    countdownUnit.textContent =
+      "COMPLETADO";
   }
 
 
-  if (progressText) {
-    progressText.textContent =
-      "100%";
+  if (daysEl) {
+    daysEl.textContent = "0";
+  }
+
+  if (hoursEl) {
+    hoursEl.textContent = "00";
+  }
+
+  if (minutesEl) {
+    minutesEl.textContent = "00";
+  }
+
+  if (secondsEl) {
+    secondsEl.textContent = "00";
   }
 
 
-  progressLabel.textContent =
-    "ROCA CON LUCHO";
-
-  progressTitle.textContent =
-    "Viaje completado";
-
-  progressMessage.textContent =
-    "09—12 OCT 2026";
-
-  statusMessage.textContent =
-    "Valió la pena.";
-
-
-  nextEventIcon.textContent =
-    "✓";
-
-  nextTitle.textContent =
-    "Roca con Lucho";
-
-  nextDate.textContent =
-    "VIAJE COMPLETADO";
-
-  nextDetail.textContent =
-    "Hasta la próxima.";
-
+  if (statusMessage) {
+    statusMessage.textContent =
+      "Valió la pena.";
+  }
 }
 
 
@@ -1109,213 +670,35 @@ function updateTrip() {
 
     stateBeforeTrip(now);
 
-  }
-
-  else if (
+  } else if (
     now < trip.arrivalNeuquen
   ) {
 
     stateFlightOut(now);
 
-  }
-
-  else if (
+  } else if (
     now < trip.arrivalRoca
   ) {
 
     stateTransfer(now);
 
-  }
-
-  else if (
+  } else if (
     now < trip.returnDeparture
   ) {
 
     stateInRoca(now);
 
-  }
-
-  else if (
+  } else if (
     now < trip.returnArrival
   ) {
 
     stateReturnFlight(now);
 
-  }
-
-  else {
+  } else {
 
     stateFinished();
-
   }
-
 }
-
-
-/* =========================================================
-   CHECKLIST
-   ========================================================= */
-
-const checklistInputs =
-  [
-    ...document.querySelectorAll(
-      "[data-check]"
-    )
-  ];
-
-
-const checklistStorageKey =
-  "rocaConLuchoChecklist";
-
-
-function loadChecklist() {
-
-  let saved = {};
-
-
-  try {
-
-    saved =
-      JSON.parse(
-        localStorage.getItem(
-          checklistStorageKey
-        ) || "{}"
-      );
-
-  }
-
-  catch {
-
-    saved = {};
-
-  }
-
-
-  checklistInputs.forEach(
-    input => {
-
-      input.checked =
-        Boolean(
-          saved[input.dataset.check]
-        );
-
-    }
-  );
-
-
-  updatePreparation();
-
-}
-
-
-function saveChecklist() {
-
-  const state = {};
-
-
-  checklistInputs.forEach(
-    input => {
-
-      state[input.dataset.check] =
-        input.checked;
-
-    }
-  );
-
-
-  localStorage.setItem(
-    checklistStorageKey,
-    JSON.stringify(state)
-  );
-
-
-  updatePreparation();
-
-}
-
-
-function updatePreparation() {
-
-  const total =
-    checklistInputs.length;
-
-
-  const completed =
-    checklistInputs.filter(
-      input => input.checked
-    ).length;
-
-
-  const percent =
-    total === 0
-      ? 0
-      : Math.round(
-          (completed / total) * 100
-        );
-
-
-  if (prepFill) {
-
-    prepFill.style.width =
-      `${percent}%`;
-
-  }
-
-
-  if (prepPercent) {
-
-    prepPercent.textContent =
-      `${percent}%`;
-
-  }
-
-
-  if (!prepStatus) {
-    return;
-  }
-
-
-  if (percent === 0) {
-
-    prepStatus.textContent =
-      "Todavía no marcaste nada.";
-
-  }
-
-  else if (percent < 50) {
-
-    prepStatus.textContent =
-      `${completed} de ${total} cosas listas.`;
-
-  }
-
-  else if (percent < 100) {
-
-    prepStatus.textContent =
-      "La valija empieza a tomar forma.";
-
-  }
-
-  else {
-
-    prepStatus.textContent =
-      "TODO LISTO ✓";
-
-  }
-
-}
-
-
-checklistInputs.forEach(
-  input => {
-
-    input.addEventListener(
-      "change",
-      saveChecklist
-    );
-
-  }
-);
 
 
 /* =========================================================
@@ -1341,28 +724,22 @@ function applyTheme(theme) {
       "dark"
     );
 
-
     themeMeta?.setAttribute(
       "content",
       "#101010"
     );
 
-  }
-
-  else {
+  } else {
 
     document.documentElement.removeAttribute(
       "data-theme"
     );
 
-
     themeMeta?.setAttribute(
       "content",
       "#f3f1eb"
     );
-
   }
-
 }
 
 
@@ -1377,9 +754,7 @@ function loadTheme() {
   if (savedTheme) {
 
     applyTheme(savedTheme);
-
     return;
-
   }
 
 
@@ -1394,7 +769,6 @@ function loadTheme() {
       ? "dark"
       : "light"
   );
-
 }
 
 
@@ -1419,7 +793,6 @@ function toggleTheme() {
 
 
   applyTheme(nextTheme);
-
 }
 
 
@@ -1430,103 +803,12 @@ themeToggle?.addEventListener(
 
 
 /* =========================================================
-   HOJA DE RUTA
-   ========================================================= */
-
-let routeVisible = true;
-
-
-function toggleTimeline() {
-
-  if (
-    !timeline ||
-    !routeButton
-  ) {
-    return;
-  }
-
-
-  routeVisible =
-    !routeVisible;
-
-
-  timeline.style.display =
-    routeVisible
-      ? "block"
-      : "none";
-
-
-  routeButton.textContent =
-    routeVisible
-      ? "OCULTAR"
-      : "VER TODO";
-
-}
-
-
-routeButton?.addEventListener(
-  "click",
-  toggleTimeline
-);
-
-
-/* =========================================================
-   DISTANCIAS · DEBUG
-   ========================================================= */
-
-function logUsefulDistances() {
-
-  const hotel =
-    locations.hotel;
-
-
-  const targets = [
-    locations.oktober,
-    locations.lions,
-    locations.luciano,
-    locations.nqn
-  ];
-
-
-  console.group(
-    "Roca con Lucho · Distancias"
-  );
-
-
-  targets.forEach(
-    location => {
-
-      const distance =
-        calculateDistanceKm(
-          hotel,
-          location
-        );
-
-
-      console.log(
-        `${location.name}: ${distance.toFixed(2)} km aprox.`
-      );
-
-    }
-  );
-
-
-  console.groupEnd();
-
-}
-
-
-/* =========================================================
    INICIO
    ========================================================= */
 
 loadTheme();
 
-loadChecklist();
-
 updateTrip();
-
-logUsefulDistances();
 
 runLanding();
 
@@ -1536,25 +818,37 @@ setInterval(
   1000
 );
 
+
 /* =========================================================
    SERVICE WORKER · PWA
    ========================================================= */
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("./service-worker.js")
-      .then(registration => {
-        console.log(
-          "Roca con Lucho PWA activa:",
-          registration.scope
-        );
-      })
-      .catch(error => {
-        console.error(
-          "Error registrando Service Worker:",
-          error
-        );
-      });
-  });
+
+  window.addEventListener(
+    "load",
+    () => {
+
+      navigator.serviceWorker
+        .register(
+          "./service-worker.js"
+        )
+        .then(registration => {
+
+          console.log(
+            "Roca con Lucho PWA activa:",
+            registration.scope
+          );
+
+        })
+        .catch(error => {
+
+          console.error(
+            "Error registrando Service Worker:",
+            error
+          );
+
+        });
+    }
+  );
 }
